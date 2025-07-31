@@ -1,3 +1,7 @@
+[settings]
+timeout = 1000
+provider = "native"
+
 [relaychain]
 default_command = "polkadot"
 chain = "rococo-local"
@@ -18,4 +22,4 @@ id = 1000
 [parachains.collator]
 name = "charlie"
 ws_port = 9988
-command = "parachain-template-node"
+command = "./target/release/parachain-template-node"
