@@ -1,5 +1,5 @@
 [workspace]
-members = ["pallets/template"]
+members = ["runtime", "pallets/template"]
 resolver = "2"
 
 [workspace.package]
@@ -14,7 +14,8 @@ edition = "2021"
 publish = false
 
 [workspace.dependencies]
-pallet-template = { path = "./pallets/template", default-features = false }
+pallet-parachain-template = { path = "./pallets/template", default-features = false }
+#parachain-template-runtime = { path = "./runtime" }
 
 docify = { version = "0.2.9" }
 clap = { version = "4.5.42", features = ["derive"] }
