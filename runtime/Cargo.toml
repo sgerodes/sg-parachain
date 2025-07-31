@@ -25,7 +25,7 @@ serde_json = { workspace = true, default-features = false, features = ["alloc"] 
 smallvec = { workspace = true, default-features = true }
 
 # Local
-pallet-parachain-template = { workspace = true }
+pallet-template = { workspace = true }
 
 polkadot-sdk = { workspace = true, default-features = false, features = [
 	"pallet-aura",
