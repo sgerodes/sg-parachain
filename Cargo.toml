@@ -56,8 +56,6 @@ unexpected_cfgs = { level = "warn", check-cfg = [
     'cfg(substrate_runtime)',
 ] }
 
-
-
 [workspace.lints.clippy]
 all = { level = "allow", priority = 0 }
 bind_instead_of_map = { level = "allow", priority = 2 }              # stylistic
