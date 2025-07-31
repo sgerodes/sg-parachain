@@ -1,4 +1,9 @@
-[package]
+[workspace]
+members = ["node"]
+resolver = "2"
+
+#[package]
+[workspace.package]
 name = "sg-parachain"
 description = "A parachain-template helper crate to keep documentation in sync with the template's components."
 version = "0.0.0"
@@ -9,18 +14,19 @@ repository = "https://github.com/sgerodes/sg-parachain"
 edition = "2021"
 publish = false
 
-[dependencies]
-#parachain-node = { path = "./node" }
+[workspace.dependencies]
+parachain-node = { path = "./node" }
 
 docify = { version = "0.2.9" }
 clap = { version = "4.5.42", features = ["derive"] }
 codec = { version = "3.7.5", default-features = false, package = "parity-scale-codec" }
 futures = { version = "0.3.31", features = ["thread-pool"] }
-jsonrpsee = { version = "0.25.1" }
+jsonrpsee = { version = "0.24.9" }
 scale-info = { version = "2.11.6", default-features = false, features = ["derive", "serde"] }
 serde_json = { version = "1.0.141", default-features = false, features = ["alloc"] }
 color-print = { version = "0.3.4" }
 log = { version = "0.4.22", default-features = false }
+serde = { version = "1.0.214", default-features = false }
 tokio = { version = "1.47.0", features = ["net", "rt", "rt-multi-thread", "macros", "time"] }
 
 polkadot-sdk = { git = "https://github.com/paritytech/polkadot-sdk.git", branch = "stable2506", default-features = false }
@@ -28,5 +34,44 @@ parachain-template-runtime = { git = "https://github.com/paritytech/polkadot-sdk
 prometheus-endpoint = { git = "https://github.com/paritytech/polkadot-sdk.git", branch = "stable2506", default-features = true, package = "substrate-prometheus-endpoint" }
 
 
-[features]
+[workspace.features]
 generate-readme = []
+
+
+[workspace.lints.rust]
+suspicious_double_ref_op = { level = "allow", priority = 2 }
+# `substrate_runtime` is a common `cfg` condition name used in the repo.
+unexpected_cfgs = { level = "warn", check-cfg = [
+    'cfg(build_opt_level, values("3"))',
+    'cfg(build_profile, values("debug", "release"))',
+    'cfg(enable_alloc_error_handler)',
+    'cfg(fuzzing)',
+    'cfg(ignore_flaky_test)',
+    'cfg(substrate_runtime)',
+] }
+
+[workspace.lints.clippy]
+all = { level = "allow", priority = 0 }
+bind_instead_of_map = { level = "allow", priority = 2 }              # stylistic
+borrowed-box = { level = "allow", priority = 2 }                     # Reasonable to fix this one
+complexity = { level = "warn", priority = 1 }
+correctness = { level = "warn", priority = 1 }
+default_constructed_unit_structs = { level = "allow", priority = 2 } # stylistic
+derivable_impls = { level = "allow", priority = 2 }                  # false positives
+eq_op = { level = "allow", priority = 2 }                            # In tests we test equality.
+erasing_op = { level = "allow", priority = 2 }                       # E.g. 0 * DOLLARS
+extra-unused-type-parameters = { level = "allow", priority = 2 }     # stylistic
+identity-op = { level = "allow", priority = 2 }                      # One case where we do 0 +
+if-same-then-else = { level = "allow", priority = 2 }
+needless-lifetimes = { level = "allow", priority = 2 }               # generated code
+needless_option_as_deref = { level = "allow", priority = 2 }         # false positives
+nonminimal-bool = { level = "allow", priority = 2 }                  # maybe
+option-map-unit-fn = { level = "allow", priority = 2 }               # stylistic
+stable_sort_primitive = { level = "allow", priority = 2 }            # prefer stable sort
+too-many-arguments = { level = "allow", priority = 2 }               # (Turning this on would lead to)
+type_complexity = { level = "allow", priority = 2 }                  # raison d'etre
+unit_arg = { level = "allow", priority = 2 }                         # stylistic
+unnecessary_cast = { level = "allow", priority = 2 }                 # Types may change
+useless_conversion = { level = "allow", priority = 2 }               # Types may change
+while_immutable_condition = { level = "allow", priority = 2 }        # false positives
+zero-prefixed-literal = { level = "allow", priority = 2 }            # 00_1000_000

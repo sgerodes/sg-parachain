@@ -47,3 +47,4 @@ try-runtime = [
 	"parachain-template-runtime/try-runtime",
 	"polkadot-sdk/try-runtime",
 ]
+
