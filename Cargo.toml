@@ -3,14 +3,14 @@ name = "parachain-template"
 description = "A parachain-template helper crate to keep documentation in sync with the template's components."
 version = "0.0.0"
 license = "Unlicense"
-authors.workspace = true
-homepage.workspace = true
-repository.workspace = true
-edition.workspace = true
+authors = [ "Sergey Gerodes <https://sergeygerodes.xyz>"]
+homepage = "https://github.com/sgerodes/sg-parachain"
+repository = "https://github.com/sgerodes/sg-parachain"
+edition = "2021"
 publish = false
 
 [dependencies]
-docify = { workspace = true }
+docify = { version = "0.2.9" }
 
 [features]
 generate-readme = []
