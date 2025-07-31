@@ -1,5 +1,5 @@
 [workspace]
-members = ["runtime", "pallets/template"]
+members = ["runtime", "node", "pallets/template"]
 resolver = "2"
 
 [workspace.package]
@@ -15,7 +15,7 @@ publish = false
 
 [workspace.dependencies]
 pallet-parachain-template = { path = "./pallets/template", default-features = false }
-#parachain-template-runtime = { path = "./runtime" }
+parachain-template-runtime = { path = "./runtime" }
 
 docify = { version = "0.2.9" }
 clap = { version = "4.5.42", features = ["derive"] }
@@ -35,9 +35,8 @@ polkadot-sdk = { git = "https://github.com/paritytech/polkadot-sdk.git", branch 
 frame = { git = "https://github.com/paritytech/polkadot-sdk.git", branch = "stable2503", default-features = false, package = "polkadot-sdk-frame" }
 cumulus-pallet-parachain-system = { git = "https://github.com/paritytech/polkadot-sdk.git", branch = "stable2503", default-features = false }
 substrate-wasm-builder = { git = "https://github.com/paritytech/polkadot-sdk.git", branch = "stable2503", default-features = false}
+prometheus-endpoint = { git = "https://github.com/paritytech/polkadot-sdk.git", branch = "stable2503", default-features = true, package = "substrate-prometheus-endpoint"}
 
-#[patch."https://github.com/paritytech/polkadot-sdk.git"]
-#substrate-prometheus-endpoint = { path = "patches/empty-prometheus" }
 
 #[workspace.features]
 #generate-readme = []
