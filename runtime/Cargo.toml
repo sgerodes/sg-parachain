@@ -20,7 +20,6 @@ substrate-wasm-builder = { optional = true, workspace = true, default-features =
 pallet-parachain-template = { workspace = true }
 
 codec = { features = ["derive"], workspace = true }
-cumulus-pallet-parachain-system.workspace = true
 docify = { workspace = true }
 hex-literal = { optional = true, workspace = true, default-features = true }
 log = { workspace = true }
@@ -28,6 +27,7 @@ scale-info = { features = ["derive"], workspace = true }
 serde_json = { workspace = true, default-features = false, features = ["alloc"] }
 smallvec = { workspace = true, default-features = true }
 
+cumulus-pallet-parachain-system = { workspace = true }
 polkadot-sdk = { workspace = true, features = [
     "cumulus-pallet-aura-ext",
     "cumulus-pallet-session-benchmarking",
@@ -96,5 +96,5 @@ metadata-hash = ["substrate-wasm-builder/metadata-hash"]
 # for an on-chain release.
 on-chain-release-build = ["metadata-hash"]
 
-#[lints]
-#workspace = true
+[lints]
+workspace = true
