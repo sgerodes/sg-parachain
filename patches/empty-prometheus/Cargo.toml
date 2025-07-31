@@ -1,7 +1,0 @@
-[package]
-name = "substrate-prometheus-endpoint"
-version = "0.17.2"
-edition = "2021"
-
-[lib]
-path = "lib.rs"
