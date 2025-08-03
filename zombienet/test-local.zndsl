@@ -1,6 +1,6 @@
 Description: Minimal parachain test
-Network: /Users/sergeygerodes/Vscode/sg-parachain/zombienet/zombienet.toml
-Creds: /Users/sergeygerodes/Vscode/sg-parachain/zombienet/dummy
+Network: ./zombienet.toml
+Creds: ./dummy
 
 # Check nodes are up
 alice: is up
