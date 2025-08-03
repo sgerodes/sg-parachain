@@ -17,20 +17,11 @@ zombienet spawn ./zombienet/zombienet.toml
 
 ## Running Tests
 
-### Option 1: Spawn and Test Separately
-```bash
-# 1. Spawn the network first
-zombienet spawn ./zombienet/zombienet.toml
-
-# 2. Then run tests against the running network
-zombienet test ./zombienet/test-parachain.zndsl
-```
-
-### Option 2: Spawn and Test in One Command (Recommended)
+### Spawn and Test in One Command 
 ```bash
 # From the zombienet directory
 cd zombienet
-zombienet test ./test-local.zndsl --provider native
+zombienet test ./zombienet/test-minimal.zndsl --provider native
 ```
 
 **Note:** The `--provider native` flag ensures the test runs with the native provider instead of kubernetes.
