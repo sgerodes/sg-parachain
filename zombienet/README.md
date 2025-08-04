@@ -29,3 +29,7 @@ zombienet test ./zombienet/test-minimal.zndsl --provider native
 **Zombienet DSL Resources**: For detailed configuration options, see the [Zombienet DSL specification](https://paritytech.github.io/zombienet/cli/test-dsl-definition-spec.html).
 
 **Test Examples**: See [zombienet test examples](https://github.com/paritytech/zombienet/tree/master/examples) for more test patterns.
+
+## Fork a chain 
+
+Chopsticks provides a way to [fork chains](https://docs.polkadot.com/tutorials/polkadot-sdk/testing/fork-live-chains/)
