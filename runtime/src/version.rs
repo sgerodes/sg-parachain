@@ -1,7 +1,7 @@
-use polkadot_sdk::sp_version::RuntimeVersion;
-pub use crate::apis::RUNTIME_API_VERSIONS;
 #[cfg(feature = "std")]
 use crate::sp_version::NativeVersion;
+use crate::sp_version::RuntimeVersion;
+pub use crate::apis::RUNTIME_API_VERSIONS;
 
 #[polkadot_sdk::sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
