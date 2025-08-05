@@ -31,9 +31,9 @@ impl Extensions {
 pub fn development_chain_spec() -> ChainSpec {
 	// Give your base currency a unit name and decimal places
 	let mut properties = sc_chain_spec::Properties::new();
-	properties.insert("tokenSymbol".into(), "UNIT".into());
-	properties.insert("tokenDecimals".into(), 12.into());
-	properties.insert("ss58Format".into(), 42.into());
+    properties.insert("tokenSymbol".into(), network_constants::TOKEN_SYMBOL.into());
+    properties.insert("tokenDecimals".into(), network_constants::TOKEN_DECIMALS.into());
+    properties.insert("ss58Format".into(), network_constants::SS58FORMAT.into());
 
 	ChainSpec::builder(
 		runtime::WASM_BINARY.expect("WASM binary was not built, please build it!"),
@@ -50,9 +50,9 @@ pub fn development_chain_spec() -> ChainSpec {
 pub fn local_chain_spec() -> ChainSpec {
 	// Give your base currency a unit name and decimal places
 	let mut properties = sc_chain_spec::Properties::new();
-	properties.insert("tokenSymbol".into(), "UNIT".into());
-	properties.insert("tokenDecimals".into(), 12.into());
-	properties.insert("ss58Format".into(), 42.into());
+	properties.insert("tokenSymbol".into(), network_constants::TOKEN_SYMBOL.into());
+	properties.insert("tokenDecimals".into(), network_constants::TOKEN_DECIMALS.into());
+	properties.insert("ss58Format".into(), network_constants::SS58FORMAT.into());
 
 	#[allow(deprecated)]
 	ChainSpec::builder(

@@ -11,6 +11,7 @@ publish = false
 build = "build.rs"
 
 [dependencies]
+network_constants = { workspace = true }
 parachain-template-runtime = { workspace = true }
 
 clap = { features = ["derive"], workspace = true }

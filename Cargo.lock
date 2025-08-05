@@ -9947,6 +9947,7 @@ dependencies = [
  "futures",
  "jsonrpsee",
  "log",
+ "network_constants",
  "parachain-template-runtime",
  "polkadot-sdk 2503.2.0",
  "serde",
