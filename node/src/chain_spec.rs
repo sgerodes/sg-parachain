@@ -3,6 +3,7 @@ use polkadot_sdk::*;
 use parachain_template_runtime as runtime;
 use sc_chain_spec::{ChainSpecExtension, ChainSpecGroup};
 use sc_service::ChainType;
+use sc_service::Properties;
 use serde::{Deserialize, Serialize};
 
 /// Specialized `ChainSpec` for the normal parachain runtime.
@@ -29,11 +30,7 @@ impl Extensions {
 }
 
 pub fn development_chain_spec() -> ChainSpec {
-	// Give your base currency a unit name and decimal places
-	let mut properties = sc_chain_spec::Properties::new();
-    properties.insert("tokenSymbol".into(), network_constants::TOKEN_SYMBOL.into());
-    properties.insert("tokenDecimals".into(), network_constants::TOKEN_DECIMALS.into());
-    properties.insert("ss58Format".into(), network_constants::SS58FORMAT.into());
+    let properties = build_default_chain_properties();
 
 	ChainSpec::builder(
 		runtime::WASM_BINARY.expect("WASM binary was not built, please build it!"),
@@ -48,11 +45,7 @@ pub fn development_chain_spec() -> ChainSpec {
 }
 
 pub fn local_chain_spec() -> ChainSpec {
-	// Give your base currency a unit name and decimal places
-	let mut properties = sc_chain_spec::Properties::new();
-	properties.insert("tokenSymbol".into(), network_constants::TOKEN_SYMBOL.into());
-	properties.insert("tokenDecimals".into(), network_constants::TOKEN_DECIMALS.into());
-	properties.insert("ss58Format".into(), network_constants::SS58FORMAT.into());
+    let properties = build_default_chain_properties();
 
 	#[allow(deprecated)]
 	ChainSpec::builder(
@@ -66,4 +59,12 @@ pub fn local_chain_spec() -> ChainSpec {
 	.with_protocol_id("template-local")
 	.with_properties(properties)
 	.build()
+}
+
+fn build_default_chain_properties() -> Properties {
+    let mut properties = Properties::new();
+    properties.insert("tokenSymbol".into(), network_constants::TOKEN_SYMBOL.into());
+    properties.insert("tokenDecimals".into(), network_constants::TOKEN_DECIMALS.into());
+    properties.insert("ss58Format".into(), network_constants::SS58FORMAT.into());
+    properties
 }
