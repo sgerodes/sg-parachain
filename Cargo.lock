@@ -7694,6 +7694,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "network_constants"
+version = "0.0.0"
+
+[[package]]
 name = "nix"
 version = "0.26.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -9957,6 +9961,7 @@ dependencies = [
  "docify",
  "hex-literal",
  "log",
+ "network_constants",
  "pallet-parachain-template",
  "parity-scale-codec",
  "polkadot-sdk 2503.2.0",

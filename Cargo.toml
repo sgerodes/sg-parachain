@@ -1,5 +1,5 @@
 [workspace]
-members = ["runtime", "node", "pallets/template"]
+members = ["runtime", "node", "pallets/template", "network_constants"]
 resolver = "2"
 
 [workspace.package]
@@ -11,13 +11,14 @@ authors = [ "Sergey Gerodes <https://sergeygerodes.xyz>"]
 homepage = "https://github.com/sgerodes/sg-parachain"
 repository = "https://github.com/sgerodes/sg-parachain"
 edition = "2021"
+rust-version = "1.87.0"
 publish = false
 
 [workspace.dependencies]
-# local
-pallet-parachain-template = { path = "./pallets/template", default-features = false }
+network_constants = { path = "network_constants", default-features = false }
 parachain-template-runtime = { path = "./runtime" }
 parachain-template-node = { path = "./node" }
+pallet-parachain-template = { path = "./pallets/template", default-features = false }
 
 docify = { version = "0.2.9" }
 clap = { version = "4.5.42", features = ["derive"] }

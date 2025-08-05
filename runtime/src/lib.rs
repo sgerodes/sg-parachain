@@ -12,8 +12,11 @@ mod benchmarks;
 pub mod configs;
 mod genesis_config_presets;
 mod weights;
+mod version;
 
 extern crate alloc;
+
+pub use version::VERSION;
 use alloc::vec::Vec;
 use smallvec::smallvec;
 
@@ -25,9 +28,6 @@ use sp_runtime::{
 	MultiSignature,
 };
 
-#[cfg(feature = "std")]
-use sp_version::NativeVersion;
-use sp_version::RuntimeVersion;
 
 use frame_support::weights::{
 	constants::WEIGHT_REF_TIME_PER_SECOND, Weight, WeightToFeeCoefficient, WeightToFeeCoefficients,
@@ -165,18 +165,6 @@ impl_opaque_keys! {
 	}
 }
 
-#[sp_version::runtime_version]
-pub const VERSION: RuntimeVersion = RuntimeVersion {
-	spec_name: alloc::borrow::Cow::Borrowed("parachain-template-runtime"),
-	impl_name: alloc::borrow::Cow::Borrowed("parachain-template-runtime"),
-	authoring_version: 1,
-	spec_version: 1,
-	impl_version: 0,
-	apis: apis::RUNTIME_API_VERSIONS,
-	transaction_version: 1,
-	system_version: 1,
-};
-
 #[docify::export]
 mod block_times {
 	/// This determines the average expected block time that we are targeting. Blocks will be
@@ -185,7 +173,7 @@ mod block_times {
 	/// slot_duration()`.
 	///
 	/// Change this to adjust the block time.
-	pub const MILLI_SECS_PER_BLOCK: u64 = 6000;
+	pub const MILLI_SECS_PER_BLOCK: u64 = network_constants::MILLI_SECS_PER_BLOCK;
 
 	// NOTE: Currently it is not possible to change the slot duration after the chain has started.
 	// Attempting to do so will brick block production.
@@ -199,12 +187,12 @@ pub const HOURS: BlockNumber = MINUTES * 60;
 pub const DAYS: BlockNumber = HOURS * 24;
 
 // Unit = the base number of indivisible units for balances
-pub const UNIT: Balance = 1_000_000_000_000;
-pub const MILLI_UNIT: Balance = 1_000_000_000;
-pub const MICRO_UNIT: Balance = 1_000_000;
+pub const UNIT: Balance = network_constants::UNIT;
+pub const MILLI_UNIT: Balance = UNIT/1000;
+pub const MICRO_UNIT: Balance = UNIT/1_000_000;
 
 /// The existential deposit. Set to 1/10 of the Connected Relay Chain.
-pub const EXISTENTIAL_DEPOSIT: Balance = MILLI_UNIT;
+pub const EXISTENTIAL_DEPOSIT: Balance = network_constants::EXISTENTIAL_DEPOSIT;
 
 /// We assume that ~5% of the block weight is consumed by `on_initialize` handlers. This is
 /// used to limit the maximal weight of a single extrinsic.
@@ -230,7 +218,7 @@ mod async_backing_params {
 	/// number of blocks authored per slot.
 	pub(crate) const BLOCK_PROCESSING_VELOCITY: u32 = 1;
 	/// Relay chain slot duration, in milliseconds.
-	pub(crate) const RELAY_CHAIN_SLOT_DURATION_MILLIS: u32 = 6000;
+	pub(crate) const RELAY_CHAIN_SLOT_DURATION_MILLIS: u32 = network_constants::RELAY_CHAIN_SLOT_DURATION_MILLIS;
 }
 pub(crate) use async_backing_params::*;
 
@@ -243,11 +231,6 @@ type ConsensusHook = cumulus_pallet_aura_ext::FixedVelocityConsensusHook<
 	UNINCLUDED_SEGMENT_CAPACITY,
 >;
 
-/// The version information used to identify this runtime when compiled natively.
-#[cfg(feature = "std")]
-pub fn native_version() -> NativeVersion {
-	NativeVersion { runtime_version: VERSION, can_author_with: Default::default() }
-}
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
 #[frame_support::runtime]
