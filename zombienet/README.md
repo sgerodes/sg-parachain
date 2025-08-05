@@ -12,16 +12,16 @@ Zombienet is a testing framework for Polkadot networks. See the [official GitHub
 
 Start the parachain zombienet from the root directory of the substrate project
 ```bash
-zombienet spawn ./zombienet/zombienet.toml
+cd zombienet
+zombienet spawn ./zombienet.toml
 ```
 
 ## Running Tests
 
 ### Spawn and Test in One Command 
 ```bash
-# From the zombienet directory
 cd zombienet
-zombienet test ./zombienet/test-minimal.zndsl --provider native
+zombienet test ./test-minimal.zndsl --provider native
 ```
 
 **Note:** The `--provider native` flag ensures the test runs with the native provider instead of kubernetes.
