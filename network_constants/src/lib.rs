@@ -17,3 +17,4 @@ pub const EXISTENTIAL_DEPOSIT: u128 = UNIT / 1000;
 // Attempting to do so will brick block production.
 pub const MILLI_SECS_PER_BLOCK: u64 = 6000;
 pub const RELAY_CHAIN_SLOT_DURATION_MILLIS: u32 = 6000;
+

@@ -5,8 +5,8 @@ pub use crate::apis::RUNTIME_API_VERSIONS;
 
 #[polkadot_sdk::sp_version::runtime_version]
 pub const VERSION: RuntimeVersion = RuntimeVersion {
-    spec_name: alloc::borrow::Cow::Borrowed("parachain-template-runtime"),
-    impl_name: alloc::borrow::Cow::Borrowed("parachain-template-runtime"),
+    spec_name: alloc::borrow::Cow::Borrowed("parachain-runtime"),
+    impl_name: alloc::borrow::Cow::Borrowed("parachain-runtime"),
     authoring_version: 1,
     spec_version: 1,
     impl_version: 0,
