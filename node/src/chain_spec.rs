@@ -34,7 +34,7 @@ pub fn development_chain_spec() -> ChainSpec {
 
 	ChainSpec::builder(
 		runtime::WASM_BINARY.expect("WASM binary was not built, please build it!"),
-		Extensions { relay_chain: RELAY_CHAIN.into(), para_id: runtime::PARACHAIN_ID },
+		Extensions { relay_chain: RELAY_CHAIN.into(), para_id: network_constants::PARACHAIN_ID },
 	)
 	.with_name("Development")
 	.with_id("dev")
@@ -50,13 +50,47 @@ pub fn local_chain_spec() -> ChainSpec {
 	#[allow(deprecated)]
 	ChainSpec::builder(
 		runtime::WASM_BINARY.expect("WASM binary was not built, please build it!"),
-		Extensions { relay_chain: RELAY_CHAIN.into(), para_id: runtime::PARACHAIN_ID },
+		Extensions { relay_chain: RELAY_CHAIN.into(), para_id: network_constants::PARACHAIN_ID },
 	)
 	.with_name("Local Testnet")
 	.with_id("local_testnet")
 	.with_chain_type(ChainType::Local)
 	.with_genesis_config_preset_name(sc_chain_spec::LOCAL_TESTNET_RUNTIME_PRESET)
 	.with_protocol_id("template-local")
+	.with_properties(properties)
+	.build()
+}
+
+/// Prism chain specification for the first parachain
+pub fn prism_chain_spec() -> ChainSpec {
+    let properties = build_default_chain_properties();
+
+	ChainSpec::builder(
+		runtime::WASM_BINARY.expect("WASM binary was not built, please build it!"),
+		Extensions { relay_chain: RELAY_CHAIN.into(), para_id: 950 },
+	)
+	.with_name("Prism Testnet")
+	.with_id("prism_dev")
+	.with_chain_type(ChainType::Local)
+	.with_genesis_config_preset_name(sp_genesis_builder::LOCAL_TESTNET_RUNTIME_PRESET)
+	.with_protocol_id("template-prism")
+	.with_properties(properties)
+	.build()
+}
+
+/// Pulse chain specification for the second parachain
+pub fn pulse_chain_spec() -> ChainSpec {
+    let properties = build_default_chain_properties();
+
+	ChainSpec::builder(
+		runtime::WASM_BINARY.expect("WASM binary was not built, please build it!"),
+		Extensions { relay_chain: RELAY_CHAIN.into(), para_id: 951 },
+	)
+	.with_name("Pulse Testnet")
+	.with_id("pulse_dev")
+	.with_chain_type(ChainType::Local)
+	.with_genesis_config_preset_name(sp_genesis_builder::LOCAL_TESTNET_RUNTIME_PRESET)
+	.with_protocol_id("template-pulse")
 	.with_properties(properties)
 	.build()
 }

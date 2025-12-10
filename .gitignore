@@ -2,14 +2,6 @@ target/
 .idea
 tmp/
 ./tmp*
-_localdev/tmp/*
-_localdev/parachain-configs*
-data
-serge.sh
-chain-data
-g6-solo-chain.deb
-g6-solo-chain/usr/local/sbin/g6-solo-node
-nexus_credentials.env
 *.deb
 
 **/.idea/

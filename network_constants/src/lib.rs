@@ -4,6 +4,7 @@ pub const TOKEN_SYMBOL: &str = "UNIT";
 pub const SS58FORMAT: u16 = 4044;
 pub const CHAIN_NAME: &str = "SG Parachain";
 pub const CHAIN_ID: &str = "sg";
+pub const PARACHAIN_ID: u32 = 950;
 pub const TOKEN_DECIMALS: u8 = 12;
 pub const UNIT: u128 = 10u128.pow(TOKEN_DECIMALS as u32);
 pub const EXISTENTIAL_DEPOSIT: u128 = UNIT / 1000;

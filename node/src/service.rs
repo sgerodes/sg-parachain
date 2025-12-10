@@ -29,6 +29,7 @@ use cumulus_primitives_core::{
 	ParaId,
 };
 use cumulus_relay_chain_interface::{OverseerHandle, RelayChainInterface};
+// use cumulus_client_parachain_inherent::ParachainInherentDataProvider;
 
 // Substrate Imports
 use frame_benchmarking_cli::SUBSTRATE_REFERENCE_HARDWARE;
@@ -201,12 +202,15 @@ fn start_consensus(
 		client.clone(),
 	);
 
-	let params = AuraParams {
-		create_inherent_data_providers: move |_, ()| async move { Ok(()) },
+    let params = AuraParams {
+        create_inherent_data_providers: move |_, ()| async move {
+            // Provide timestamp inherent; parachain inherent is built internally by the collator
+            Ok(sp_timestamp::InherentDataProvider::from_system_time())
+        },
 		block_import,
 		para_client: client.clone(),
 		para_backend: backend,
-		relay_client: relay_chain_interface,
+        relay_client: relay_chain_interface,
 		code_hash_provider: move |block_hash| {
 			client.code_at(block_hash).ok().map(|c| ValidationCode::from(c).hash())
 		},

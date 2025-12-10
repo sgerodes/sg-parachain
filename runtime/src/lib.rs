@@ -33,7 +33,7 @@ use frame_support::weights::{
 	constants::WEIGHT_REF_TIME_PER_SECOND, Weight, WeightToFeeCoefficient, WeightToFeeCoefficients,
 	WeightToFeePolynomial,
 };
-pub use genesis_config_presets::PARACHAIN_ID;
+pub use network_constants::PARACHAIN_ID;
 pub use sp_consensus_aura::sr25519::AuthorityId as AuraId;
 pub use sp_runtime::{MultiAddress, Perbill, Permill};
 
@@ -296,6 +296,8 @@ mod runtime {
 	// Template
 	#[runtime::pallet_index(50)]
 	pub type TemplatePallet = pallet_parachain_template;
+	#[runtime::pallet_index(51)]
+	pub type BridgePallet = pallet_bridge;
 }
 
 #[docify::export(register_validate_block)]

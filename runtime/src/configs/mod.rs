@@ -321,3 +321,10 @@ impl pallet_parachain_template::Config for Runtime {
 	type RuntimeEvent = RuntimeEvent;
 	type WeightInfo = pallet_parachain_template::weights::SubstrateWeight<Runtime>;
 }
+
+impl pallet_bridge::Config for Runtime {
+	type RuntimeEvent = RuntimeEvent;
+	type WeightInfo = pallet_bridge::weights::SubstrateWeight<Runtime>;
+	type MaxQueuedMessages = ConstU32<100>;
+	type MaxMessageSize = ConstU32<1024>;
+}

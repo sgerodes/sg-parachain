@@ -8353,6 +8353,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "pallet-bridge"
+version = "0.1.0"
+dependencies = [
+ "parity-scale-codec",
+ "polkadot-sdk-frame",
+ "scale-info",
+ "sp-core",
+ "sp-runtime",
+]
+
+[[package]]
 name = "pallet-bridge-grandpa"
 version = "0.20.0"
 source = "git+https://github.com/paritytech/polkadot-sdk.git?branch=stable2503#913bb8b588aeef4daa63c73ea13ee1f3ecd5b5b5"
@@ -9951,6 +9962,7 @@ dependencies = [
  "parachain-template-runtime",
  "polkadot-sdk 2503.2.0",
  "serde",
+ "serde_json",
  "substrate-prometheus-endpoint",
 ]
 
@@ -9963,6 +9975,7 @@ dependencies = [
  "hex-literal",
  "log",
  "network_constants",
+ "pallet-bridge",
  "pallet-parachain-template",
  "parity-scale-codec",
  "polkadot-sdk 2503.2.0",

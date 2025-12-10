@@ -19,6 +19,7 @@ substrate-wasm-builder = { optional = true, workspace = true, default-features =
 [dependencies]
 network_constants = { workspace = true }
 pallet-parachain-template = { workspace = true }
+pallet-bridge = { workspace = true }
 
 codec = { features = ["derive"], workspace = true }
 docify = { workspace = true }

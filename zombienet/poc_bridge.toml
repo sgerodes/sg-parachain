@@ -1,0 +1,53 @@
+[settings]
+timeout = 1000
+provider = "native"
+
+[relaychain]
+default_command = "polkadot"
+default_args = [ "-l=parachain=debug,xcm=trace" ]
+chain = "rococo-local"
+
+  [[relaychain.nodes]]
+  name = "alice"
+  validator = true
+  rpc_port = 9933
+  port = 30333
+
+  [[relaychain.nodes]]
+  name = "bob"
+  validator = true
+  rpc_port = 9934
+  port = 30334
+
+
+[[parachains]]
+id = 950
+chain = "prism"
+
+[parachains.collator]
+name = "collator1"
+rpc_port = 9944
+command = "target/release/parachain-template-node"
+args = ["--alice", "--collator", "--force-authoring"]
+
+[[parachains]]
+id = 951
+chain = "pulse"
+
+[parachains.collator]
+name = "collator2"
+rpc_port = 9945
+command = "target/release/parachain-template-node"
+args = ["--bob", "--collator", "--force-authoring"]
+
+[[hrmp_channels]]
+  sender = 950
+  recipient = 951
+  max_capacity = 8
+  max_message_size = 1024
+
+[[hrmp_channels]]
+  sender = 951
+  recipient = 950
+  max_capacity = 8
+  max_message_size = 1024

@@ -20,6 +20,8 @@ use crate::{
 fn load_spec(id: &str) -> std::result::Result<Box<dyn ChainSpec>, String> {
 	Ok(match id {
 		"dev" => Box::new(chain_spec::development_chain_spec()),
+		"prism" => Box::new(chain_spec::prism_chain_spec()),
+		"pulse" => Box::new(chain_spec::pulse_chain_spec()),
 		"template-rococo" => Box::new(chain_spec::local_chain_spec()),
 		"" | "local" => Box::new(chain_spec::local_chain_spec()),
 		path => Box::new(chain_spec::ChainSpec::from_json_file(std::path::PathBuf::from(path))?),
