@@ -5,9 +5,10 @@
 
 #![warn(missing_docs)]
 
+use sg_parachain_runtime as runtime;
 use std::sync::Arc;
 
-use parachain_template_runtime::{opaque::Block, AccountId, Balance, Nonce};
+use runtime::{opaque::Block, AccountId, Balance, Nonce};
 
 use polkadot_sdk::*;
 

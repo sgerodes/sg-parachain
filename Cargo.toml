@@ -4,7 +4,7 @@ resolver = "2"
 
 [workspace.package]
 #name = "sg-parachain"
-description = "A parachain-template helper crate to keep documentation in sync with the template's components."
+description = "A clean parachain template."
 version = "0.0.0"
 license = "Unlicense"
 authors = [ "Sergey Gerodes <https://sergeygerodes.xyz>"]
@@ -16,8 +16,8 @@ publish = false
 
 [workspace.dependencies]
 network_constants = { path = "network_constants", default-features = false }
-parachain-template-runtime = { path = "./runtime" }
-parachain-template-node = { path = "./node" }
+sg-parachain-runtime = { path = "./runtime" }
+#sg-parachain-node = { path = "./node" }
 pallet-parachain-template = { path = "./pallets/template", default-features = false }
 pallet-bridge = { path = "./pallets/bridge", default-features = false }
 

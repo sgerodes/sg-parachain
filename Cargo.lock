@@ -9949,43 +9949,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "parachain-template-node"
-version = "0.1.0"
-dependencies = [
- "clap",
- "color-print",
- "docify",
- "futures",
- "jsonrpsee",
- "log",
- "network_constants",
- "parachain-template-runtime",
- "polkadot-sdk 2503.2.0",
- "serde",
- "serde_json",
- "substrate-prometheus-endpoint",
-]
-
-[[package]]
-name = "parachain-template-runtime"
-version = "0.1.0"
-dependencies = [
- "cumulus-pallet-parachain-system",
- "docify",
- "hex-literal",
- "log",
- "network_constants",
- "pallet-bridge",
- "pallet-parachain-template",
- "parity-scale-codec",
- "polkadot-sdk 2503.2.0",
- "scale-info",
- "serde_json",
- "smallvec",
- "substrate-wasm-builder",
-]
-
-[[package]]
 name = "parachains-common"
 version = "21.0.1"
 source = "git+https://github.com/paritytech/polkadot-sdk.git?branch=stable2503#913bb8b588aeef4daa63c73ea13ee1f3ecd5b5b5"
@@ -15220,6 +15183,43 @@ checksum = "a84f14a19e9a014bb9f4512488d9829a68e04ecabffb0f9904cd1ace94598177"
 dependencies = [
  "base16ct",
  "serde",
+]
+
+[[package]]
+name = "sg-parachain-node"
+version = "0.1.0"
+dependencies = [
+ "clap",
+ "color-print",
+ "docify",
+ "futures",
+ "jsonrpsee",
+ "log",
+ "network_constants",
+ "polkadot-sdk 2503.2.0",
+ "serde",
+ "serde_json",
+ "sg-parachain-runtime",
+ "substrate-prometheus-endpoint",
+]
+
+[[package]]
+name = "sg-parachain-runtime"
+version = "0.1.0"
+dependencies = [
+ "cumulus-pallet-parachain-system",
+ "docify",
+ "hex-literal",
+ "log",
+ "network_constants",
+ "pallet-bridge",
+ "pallet-parachain-template",
+ "parity-scale-codec",
+ "polkadot-sdk 2503.2.0",
+ "scale-info",
+ "serde_json",
+ "smallvec",
+ "substrate-wasm-builder",
 ]
 
 [[package]]

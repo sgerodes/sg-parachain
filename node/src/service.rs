@@ -1,10 +1,11 @@
 //! Service and ServiceFactory implementation. Specialized wrapper over substrate service.
 
 // std
+use sg_parachain_runtime as runtime;
 use std::{sync::Arc, time::Duration};
 
 // Local Runtime Types
-use parachain_template_runtime::{
+use runtime::{
 	apis::RuntimeApi,
 	opaque::{Block, Hash},
 };

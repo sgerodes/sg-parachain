@@ -1,6 +1,6 @@
 [package]
-name = "parachain-template-node"
-description = "A parachain node template built with Substrate and Cumulus, part of Polkadot Sdk."
+name = "sg-parachain-node"
+description = "A parachain node built with Substrate and Cumulus, part of Polkadot Sdk."
 version = "0.1.0"
 license = "Unlicense"
 authors.workspace = true
@@ -12,7 +12,7 @@ build = "build.rs"
 
 [dependencies]
 network_constants = { workspace = true }
-parachain-template-runtime = { workspace = true }
+sg-parachain-runtime = { workspace = true }
 
 clap = { features = ["derive"], workspace = true }
 color-print = { workspace = true }
@@ -33,15 +33,15 @@ polkadot-sdk = { workspace = true, features = ["substrate-build-script-utils"] }
 default = ["std"]
 std = [
 	"log/std",
-	"parachain-template-runtime/std",
+	"sg-parachain-runtime/std",
 	"polkadot-sdk/std",
 ]
 runtime-benchmarks = [
-	"parachain-template-runtime/runtime-benchmarks",
+	"sg-parachain-runtime/runtime-benchmarks",
 	"polkadot-sdk/runtime-benchmarks",
 ]
 try-runtime = [
-	"parachain-template-runtime/try-runtime",
+	"sg-parachain-runtime/try-runtime",
 	"polkadot-sdk/try-runtime",
 ]
 
