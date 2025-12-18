@@ -1,6 +1,6 @@
 #![cfg_attr(not(feature = "std"), no_std)]
 
-pub const TOKEN_SYMBOL: &str = "UNIT";
+pub const TOKEN_SYMBOL: &str = "SGP";
 pub const SS58FORMAT: u16 = 4044;
 pub const CHAIN_NAME: &str = "SG Parachain";
 pub const CHAIN_ID: &str = "sg-parachain";
